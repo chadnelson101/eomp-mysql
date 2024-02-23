@@ -31,4 +31,23 @@ const updatedProduct = async (prodID,productName, quantity, amount, Category, pr
     );
 };
 
-export{getProducts,deleteProduct,addProduct,updatedProduct}
+const addUser = async (firstName, lastName, userAge, gender, userRole, emailAdd, userPass) => {
+    await pool.query(`
+        INSERT INTO users (FirstName, lastName, userAge, Gender, userRole, emailAdd, userPass) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        [firstName, lastName, userAge, gender, userRole, emailAdd, userPass]
+    );
+}
+
+const deleteUserByName = async (firstName) => {
+    await pool.query(`DELETE FROM users WHERE FirstName = ?`,[firstName]
+    );
+};
+
+const loginUser = async (firstName) => {
+    const [[{userPass}]] = await pool.query(`SELECT userPass FROM users WHERE FirstName =?`,
+    [firstName])
+    return userPass
+}
+
+
+export{getProducts,deleteProduct,addProduct,updatedProduct,addUser,deleteUserByName,loginUser}

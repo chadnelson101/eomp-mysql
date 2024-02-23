@@ -1,16 +1,71 @@
 import express from 'express';
 import { config } from 'dotenv';
 import cors from 'cors';
-import { getProducts,deleteProduct,addProduct,updatedProduct} from './models/database.js'
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { getProducts,deleteProduct,addProduct,updatedProduct,addUser,deleteUserByName,loginUser} from './models/database.js'
 config();
 
 const PORT = process.env.PORT;
 
 const app = express();
 
-app.use(cors());    
+app.use(cors({
+    origin: '',
+    credentials: true
+}));    
 
 app.use(express.json()); 
+
+
+app.post('/user', async (req, res) => {
+        const { FirstName, lastName, userAge, Gender, userRole, emailAdd, userPass } = req.body;
+        bcrypt.hash(userPass, 10, async(err,hash) => {
+            if (err) throw err;
+            await addUser(FirstName, lastName, userAge, Gender, userRole, emailAdd, hash);
+            res.status(201).json({ message: 'you have created a account'});
+        })
+});
+
+app
+
+app.delete('/users', async (req, res) => {
+    try {
+        const { firstName } = req.body;
+        await deleteUserByName(firstName);
+        res.status(200).json({ message: 'you successfully deleted your account' });
+    } catch (error) {
+        console.error('Error deleting account:', error);
+        res.status(500).json({ error: 'Error deleting your account' });
+    }
+});
+
+const auth = async (req, res, next) => {
+        const { firstName, userPass } = req.body;
+        // Retrieve hashed password from the database based on the username (firstName)
+        const hashedPassword = await loginUser(firstName);
+        // Compare the provided password with the hashed password
+        bcrypt.compare(userPass, hashedPassword, (err, result) => {
+            if (err) {
+                throw err;
+            }
+            if (result === true) {
+                // Passwords match, user logged in successfully
+                res.send({
+                    msg: 'You have logged in successfully'
+                });
+                next();
+            } else {
+                // Passwords do not match, login failed
+                res.send({
+                    msg: 'The username or password is incorrect'
+                });
+            }
+        })
+};
+
+app.post('/login', auth, (req, res) => {
+});
 
 
 
