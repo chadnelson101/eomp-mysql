@@ -1,8 +1,8 @@
 import express from 'express';
 import { config } from 'dotenv';
 import cors from 'cors';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+// import bcrypt from 'bcrypt';
+// import jwt from 'jsonwebtoken';
 import productsRouter from './routes/products.js'
 import usersRouter from './routes/users.js'
 config();
