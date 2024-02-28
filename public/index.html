@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+    h2 {
+        text-align: center;
+        margin-top: 30px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 20px auto;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 12px;
+    }
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    tr:hover {
+        background-color: #f2f2f2;
+    }
+ </style>
+
+    <h2>Function and Path Summary</h2>
+
+<table>
+    <tr>
+        <th>Function</th>
+        <th>Path</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>getAllProducts</td>
+        <td>/</td>
+        <td>Retrieves all products from the database</td>
+    </tr>
+    <tr>
+        <td>getProductByID</td>
+        <td>/:id</td>
+        <td>Retrieves a specific product by its ID from the database</td>
+    </tr>
+    <tr>
+        <td>createProduct</td>
+        <td>/</td>
+        <td>Creates a new product with the provided details in the request body.</td>
+    </tr>
+    <tr>
+        <td>deleteProductById</td>
+        <td>/:id</td>
+        <td>Deletes a product with the specified ID from the database.</td>
+    </tr>
+    <tr>
+        <td>updateProduct</td>
+        <td>/:id</td>
+        <td>Updates the details of a product with the specified ID using the information provided in the request body. </td>
+    </tr>
+    <tr>
+        <td>addUser</td>
+        <td>/</td>
+        <td>Creates a new user account with the provided details in the request body</td>
+    </tr>
+    <tr>
+        <td>getUsers</td>
+        <td>/</td>
+        <td>Retrieves all users from the database</td>
+    </tr>
+    <tr>
+        <td>getUserByID</td>
+        <td>/:id</td>
+        <td>Retrieves a specific user by their ID from the database</td>
+    </tr>
+    <tr>
+        <td>deleteUser</td>
+        <td>/:id</td>
+        <td>Deletes a user with the specified ID from the database</td>
+    </tr>
+    <tr>
+        <td>loginUser</td>
+        <td>/login</td>
+        <td>Authenticates a user using their email and password</td>
+    </tr>
+    <tr>
+        <td>editUser</td>
+        <td>/:id</td>
+        <td>Updates the details of a user with the specified ID using the information provided in the request body.</td>
+    </tr>
+</table>
+</body>
+</html>
