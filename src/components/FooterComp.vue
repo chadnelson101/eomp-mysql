@@ -37,12 +37,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%;
+    width: 100%;
     max-width: 1200px;
+    flex-wrap: wrap;
   }
   
   .footer-item {
-    margin: 0 0.5rem;
+    margin: 0.5rem;
     font-size: 0.8rem;
+    flex: 1;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-item {
+      flex: 1 0 100%;
+      margin: 0.5rem 0;
+    }
   }
   </style>
