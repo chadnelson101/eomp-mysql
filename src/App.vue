@@ -1,14 +1,32 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+<NavBar/>
   <router-view/>
+  <FooterComp></FooterComp>
 </template>
+
+<script>
+import NavBar from './components/NavBar.vue'
+import FooterComp from './components/FooterComp.vue';
+import UserCompVue from './components/UserComp.vue';
+import AddProducts from './components/AddProducts.vue';
+
+export default {
+  components:{
+    NavBar,
+    FooterComp
+    
+  },
+
+
+}
+</script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+
+  font-family: "Alumni Sans Collegiate One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -24,7 +42,5 @@ nav a {
   color: #2c3e50;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+
 </style>
