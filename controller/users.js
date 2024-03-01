@@ -11,8 +11,8 @@ export default{
             res.status(200).json({ message: 'You have created an account'});
         });
     } catch (error) {
-        console.error('Error creating user:', error);
-        res.status(500).json({ error: 'Error creating user' });
+        console.error('Error creating account:', error);
+        res.status(500).json({ error: 'Error creating account' });
     }
 },
 
@@ -55,8 +55,8 @@ getUsers: async (req, res) => {
     
     loginUser: async (req, res, next) => {
         try {
-            const { email, userPass } = req.body;
-            const hashedPassword = await loginUser(email);
+            const { emailAdd, userPass } = req.body;
+            const hashedPassword = await loginUser(emailAdd);
 
             bcrypt.compare(userPass, hashedPassword, (err, result) => {
                 if (err) {

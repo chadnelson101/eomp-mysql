@@ -62,7 +62,7 @@ getProductByID: async (req, res) => {
         res.json(await getProducts());
     } catch (error) {
         console.error('Error updating product:', error);
-        res.status(404).json({ error: 'Error updating product' });
+        res.status(404).json({ error: 'Error updating product'});
     }
     }
 }

@@ -2,9 +2,9 @@ import { loginUser } from '../models/users.js';
 
 export default{
  auth: async (req, res, next) => {
-        const { FirstName, userPass } = req.body;
+        const { emailAdd, userPass } = req.body;
         // Retrieve hashed password from the database based on the username (firstName)
-        const hashedPassword = await loginUser(FirstName);
+        const hashedPassword = await loginUser(emailAdd);
         // Compare the provided password with the hashed password
         bcrypt.compare(userPass, hashedPassword, (err, result) => {
             if (err) {
